@@ -2,7 +2,6 @@ package com.open.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.open.data.model.WeatherResponse
 import com.open.data.network.WeatherState
 import com.open.domain.usecases.GetWeatherUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

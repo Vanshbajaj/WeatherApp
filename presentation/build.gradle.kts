@@ -50,8 +50,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("com.google.dagger:hilt-android:2.46") // or the latest version
-    kapt("com.google.dagger:hilt-compiler:2.46")
+    implementation(libs.hilt.android.v246) // or the latest version
+    kapt(libs.hilt.compiler.v246)
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
@@ -63,4 +63,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.hilt.navigation.compose) // Hilt Navigation for
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.core.testing)
 }
