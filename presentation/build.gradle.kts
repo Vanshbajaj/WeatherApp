@@ -54,6 +54,7 @@ dependencies {
     kapt(libs.hilt.compiler.v246)
     implementation(project(":data"))
     implementation(project(":domain"))
+    implementation(project(":common"))
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx.v262)
     implementation(libs.androidx.activity.compose)
