@@ -1,8 +1,11 @@
 package com.open.presentation.ui.components
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -11,8 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.composeweatherapp.core.helpers.HourConverter
-import com.open.data.model.Weather
+import com.open.domain.Weather
 
 @Composable
 fun ForecastLazyRow(forecasts: List<Weather>) {
@@ -21,32 +23,32 @@ fun ForecastLazyRow(forecasts: List<Weather>) {
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(forecasts) {
-            if (forecasts.size == 8) {
-                WeatherCard(
-                    time = HourConverter.convertHour("12"),
-//                    weatherIcon = it.weather.setWeatherType(
-//                        it.weatherStatus[0].mainDescription,
-//                        it.weatherStatus[0].description,
-//                        HourConverter.convertHour(it.date.substring(11, 13)),
-//                    ),
-                    degree = "${it.main}°"
-                )
-            } else {
-                WeatherCard(
-                    date = null,
-                    time = HourConverter.convertHour("11"),
-//                    weatherIcon = WeatherType.setWeatherType(
-//                        it.weatherStatus[0].mainDescription,
-//                        it.weatherStatus[0].description,
-//                        HourConverter.convertHour(it.date.substring(11, 13)),
-//                    ),
-                    degree = "${it.main}°"
-                )
-            }
+//        items(forecasts) {
+//            if (forecasts.size == 8) {
+//                WeatherCard(
+//                    time = HourConverter.convertHour("12"),
+////                    weatherIcon = it.weather.setWeatherType(
+////                        it.weatherStatus[0].mainDescription,
+////                        it.weatherStatus[0].description,
+////                        HourConverter.convertHour(it.date.substring(11, 13)),
+////                    ),
+//                    degree = "${it.main}°"
+//                )
+//            } else {
+//                WeatherCard(
+//                    date = null,
+//                    time = HourConverter.convertHour("11"),
+////                    weatherIcon = WeatherType.setWeatherType(
+////                        it.weatherStatus[0].mainDescription,
+////                        it.weatherStatus[0].description,
+////                        HourConverter.convertHour(it.date.substring(11, 13)),
+////                    ),
+//                    degree = "${it.main}°"
+//                )
+//            }
         }
     }
-}
+
 
 @Composable
 private fun WeatherCard(date: String? = null, time: String, degree: String) {

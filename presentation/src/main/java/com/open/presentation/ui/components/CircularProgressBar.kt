@@ -1,4 +1,4 @@
-package com.open.presentation.ui.components
+package com.open.weather.ui.theme.ui.components
 
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme

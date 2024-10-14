@@ -1,6 +1,8 @@
 package com.open.data.network
 
-import com.open.data.repository.WeatherRepository
+
+import com.open.common.Constants
+import com.open.data.repositoryImplementation.WeatherRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,6 +12,13 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+
+//todo di part domain only presentation layer only
+//todo singleton vs factory when to use which ?
+// INstalll
+// compontents use
+//differnce btw compontent and scope ??
+
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -32,7 +41,7 @@ object NetworkModule {
     @Singleton
     fun provideWeatherApiService(okHttpClient: OkHttpClient): WeatherApiService {
         return Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/data/2.5/")
+            .baseUrl(Constants.APP_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
@@ -42,7 +51,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideWeatherRepository(apiService: WeatherApiService): WeatherRepository {
-        return WeatherRepository(apiService)
+    fun provideWeatherRepository(apiService: WeatherApiService): WeatherRepositoryImpl {
+        return WeatherRepositoryImpl(apiService)
     }
 }
