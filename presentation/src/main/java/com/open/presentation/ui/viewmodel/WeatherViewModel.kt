@@ -31,10 +31,14 @@ class WeatherViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 getWeatherUseCase(cityName).collect { weather ->
-                    _weatherState.value = UiState.Success(weather) // Update to Success if data is received
+                    _weatherState.emit(UiState.Success(weather))// Update to Success if data is received
                 }
             } catch (e: Exception) {
-                _weatherState.value = UiState.Error(e.localizedMessage ?: "Unknown error") // Handle error
+                _weatherState.emit(
+                    UiState.Error(
+                        e.localizedMessage ?: "Unknown error"
+                    )
+                ) // Handle error
             }
         }
     }
