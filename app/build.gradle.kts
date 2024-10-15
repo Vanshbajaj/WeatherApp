@@ -52,9 +52,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":presentation"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -70,12 +67,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
     implementation(project(":presentation"))
     implementation(libs.androidx.lifecycle.viewmodel.ktx) // Lifecycle for ViewModel
     implementation(libs.androidx.hilt.navigation.compose) // Hilt Navigation for Compose
-    implementation(libs.hilt.android.v246) // or the latest version
-    kapt(libs.hilt.compiler.v246)
+    implementation(libs.hilt.android) // or the latest version
+    kapt(libs.hilt.compiler)
 }
 kapt {
     correctErrorTypes = true

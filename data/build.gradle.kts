@@ -4,8 +4,9 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt") // Make sure this is included
+    id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+
 }
 
 android {
@@ -53,15 +54,15 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(project(":common"))
+    implementation(project(":domain"))
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    implementation("com.google.dagger:hilt-android:2.46") // or the latest version
-    kapt("com.google.dagger:hilt-compiler:2.46")
     implementation(libs.logging.interceptor)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.hilt.android) // or the latest version
+    kapt(libs.hilt.compiler)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+
 }
