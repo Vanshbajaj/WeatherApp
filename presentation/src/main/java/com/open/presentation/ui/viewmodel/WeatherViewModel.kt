@@ -25,16 +25,20 @@ class WeatherViewModel @Inject constructor(
             return
         }
 
-        // Set the state to loading when the API call is about to be made
+
         _weatherState.value = UiState.Loading
 
         viewModelScope.launch {
             try {
                 getWeatherUseCase(cityName).collect { weather ->
-                    _weatherState.value = UiState.Success(weather) // Update to Success if data is received
+                    _weatherState.emit(UiState.Success(weather))
                 }
             } catch (e: Exception) {
-                _weatherState.value = UiState.Error(e.localizedMessage ?: "Unknown error") // Handle error
+                _weatherState.emit(
+                    UiState.Error(
+                        e.localizedMessage ?: "Unknown error"
+                    )
+                )
             }
         }
     }
