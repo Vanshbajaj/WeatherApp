@@ -3,11 +3,10 @@ package com.open.data.network
 
 import com.open.common.Constants
 import com.open.data.repositoryImplementation.WeatherRepositoryImpl
+import com.open.domain.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.scopes.ActivityScoped
-import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -35,7 +34,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideInterceptor(loggingInterceptor: HttpLoggingInterceptor):OkHttpClient{
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor):OkHttpClient{
         return OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
 
     }
@@ -51,9 +50,8 @@ object NetworkModule {
     }
 
 
-    @Provides
-    @Singleton
-    fun provideWeatherRepository(apiService: WeatherApiService): WeatherRepositoryImpl {
-        return WeatherRepositoryImpl(apiService)
-    }
+
+
+
+
 }

@@ -60,8 +60,8 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.hilt.android.v246) // or the latest version
-    kapt(libs.hilt.compiler.v246)
+    implementation(libs.hilt.android) // or the latest version
+    kapt(libs.hilt.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 

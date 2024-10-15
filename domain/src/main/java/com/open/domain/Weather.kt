@@ -1,32 +1,30 @@
 package com.open.domain
 
-import com.google.gson.annotations.SerializedName
-
 
 data class Weather(
-    @SerializedName("weather") var weather: ArrayList<WeatherResponse> = arrayListOf(),
-    @SerializedName("main") var main: Main? = Main(),
+    var weather: ArrayList<WeatherResponse> = arrayListOf(),
+    var main: Main? = Main(),
 
     )
 
 
 data class WeatherResponse(
-    @SerializedName("id") var id: Int? = null,
-    @SerializedName("main") var main: String? = null,
-    @SerializedName("description") var description: String? = null,
-    @SerializedName("icon") var icon: String? = null
+    var id: Int? = null,
+    var main: String? = null,
+    var description: String? = null,
+    var icon: String? = null
 )
 
 
 data class Main(
-    @SerializedName("temp") var temp: Double? = null,
-    @SerializedName("feels_like") var feelsLike: Double? = null,
-    @SerializedName("temp_min") var tempMin: Double? = null,
-    @SerializedName("temp_max") var tempMax: Double? = null,
-    @SerializedName("pressure") var pressure: Int? = null,
-    @SerializedName("humidity") var humidity: Int? = null,
-    @SerializedName("sea_level") var seaLevel: Int? = null,
-    @SerializedName("grnd_level") var grndLevel: Int? = null
+    var temp: Double? = null,
+    var feels_like: Double? = null,
+    var temp_min: Double? = null,
+    var temp_max: Double? = null,
+    var pressure: Int? = null,
+    var humidity: Int? = null,
+    var sea_level: Int? = null,
+    var grnd_level: Int? = null
 
 )
 

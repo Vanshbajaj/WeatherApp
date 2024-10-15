@@ -70,8 +70,8 @@ dependencies {
     implementation(project(":presentation"))
     implementation(libs.androidx.lifecycle.viewmodel.ktx) // Lifecycle for ViewModel
     implementation(libs.androidx.hilt.navigation.compose) // Hilt Navigation for Compose
-    implementation(libs.hilt.android.v246) // or the latest version
-    kapt(libs.hilt.compiler.v246)
+    implementation(libs.hilt.android) // or the latest version
+    kapt(libs.hilt.compiler)
 }
 kapt {
     correctErrorTypes = true

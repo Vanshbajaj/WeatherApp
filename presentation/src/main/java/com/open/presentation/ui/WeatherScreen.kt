@@ -34,13 +34,13 @@ fun WeatherScreen(
     var city by remember { mutableStateOf("") }
     val weatherState by viewModel.weatherState.collectAsState()
 
-    // Debugging Column setup
+
     Column(
         modifier = Modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Debug: Ensure BasicTextField is rendered
+
         TextField(
             value = city,
             onValueChange = { city = it },
@@ -61,27 +61,23 @@ fun WeatherScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Handle different UI states to display appropriate content
+
         when (weatherState) {
             is UiState.Loading -> {
-                // Show loading spinner while the API call is being processed
                 CircularProgressIndicator()
             }
 
             is UiState.Success -> {
                 val weather = (weatherState as UiState.Success).data
-                // Display the weather data when the API call is successful
                 Text(text = "Weather: ${weather.main?.temp}")
             }
 
             is UiState.Error -> {
                 val errorMessage = (weatherState as UiState.Error).message
-                // Display error message if the API call fails
                 Text(text = "Error: $errorMessage")
             }
 
             is UiState.Empty -> {
-                // Show a placeholder or an empty state when no API call has been made
                 Text(text = "Enter a city to get weather information")
             }
         }

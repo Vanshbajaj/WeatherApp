@@ -50,8 +50,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.hilt.android.v246) // or the latest version
-    kapt(libs.hilt.compiler.v246)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":common"))
