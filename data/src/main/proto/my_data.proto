@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "com.open.data.proto";
+option java_multiple_files = true;
+
+message MyData {
+  string name = 1;
+  int32 id = 2;
+}

@@ -1,5 +1,6 @@
-package com.open.presentation.ui
+package com.open.presentation.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,18 +25,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import androidx.datastore.core.DataStore
+import androidx.datastore.dataStore
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewModelScope
 import com.open.data.network.UiState
+
 import com.open.presentation.ui.viewmodel.WeatherViewModel
+import kotlinx.coroutines.launch
+
 
 @Composable
 fun WeatherScreen(
     viewModel: WeatherViewModel = hiltViewModel()
-) {
-    var city by remember { mutableStateOf("") }
+
+) { var city by remember { mutableStateOf("") }
     val weatherState by viewModel.weatherState.collectAsState()
-
-
     Column(
         modifier = Modifier,
         verticalArrangement = Arrangement.Center,
@@ -78,7 +84,17 @@ fun WeatherScreen(
             }
 
             is UiState.Empty -> {
-                Text(text = "Enter a city to get weather information")
+                LaunchedEffect(Unit) {
+                    viewModel.viewModelScope.launch {
+
+                    }
+
+                }
+                val name = viewModel.nameFlow.collectAsState("").value
+                val temp = viewModel.temp.collectAsState("").value
+                Text(text ="Last Fetched Weather ${temp} for ${name}")
+
+
             }
         }
     }

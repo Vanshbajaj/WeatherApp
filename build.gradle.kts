@@ -4,6 +4,5 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.hilt.android)  apply false
-
-
+    id("com.google.protobuf") version "0.9.1" apply  false
 }
