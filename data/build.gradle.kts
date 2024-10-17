@@ -1,3 +1,4 @@
+import com.google.protobuf.gradle.proto
 import java.io.FileInputStream
 import java.util.Properties
 
@@ -6,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("com.google.protobuf")
 
 }
 
@@ -24,6 +26,15 @@ android {
         // Add the API key to BuildConfig
         buildConfigField("String", "API_KEY", "\"${apiProperties["API_KEY"]}\"")
     }
+
+    sourceSets {
+        getByName("main") {
+            proto {
+                srcDir("src/main/proto")
+            }
+        }
+    }
+
 
     buildTypes {
         release {
@@ -53,6 +64,12 @@ android {
     }
 }
 
+
+
+
+
+
+
 dependencies {
     implementation(project(":common"))
     implementation(project(":domain"))
@@ -64,5 +81,31 @@ dependencies {
     kapt(libs.hilt.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    implementation(libs.androidx.datastore.core)
+    implementation(libs.androidx.datastore)
+    implementation(libs.protobuf.javalite)
 
 }
+kapt {
+    correctErrorTypes= true
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.21.0" // Adjust the version
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                create("java") {
+                    option("lite")
+                }
+//                create("kotlin") {
+//                    option("lite")
+//                }
+            }
+        }
+
+    }
+}
+

@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.open.presentation.ui.screens.WeatherScreen
 import com.open.presentation.ui.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val viewModel: WeatherViewModel = hiltViewModel()
-            com.open.presentation.ui.WeatherScreen(viewModel)
+            WeatherScreen(viewModel)
 
         }
     }
