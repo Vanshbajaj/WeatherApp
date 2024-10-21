@@ -1,8 +1,6 @@
 package com.open.data.proto
 
 import androidx.datastore.core.Serializer
-
-
 import java.io.InputStream
 import java.io.OutputStream
 

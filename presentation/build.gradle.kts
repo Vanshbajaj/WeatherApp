@@ -48,7 +48,7 @@ dependencies {
     implementation(libs.androidx.ui.text.android)
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.javalite)
-    implementation("com.google.protobuf:protobuf-kotlin-lite:3.21.5")
+    implementation(libs.protobuf.kotlin.lite)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

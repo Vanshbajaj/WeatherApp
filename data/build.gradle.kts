@@ -92,7 +92,7 @@ kapt {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.21.0" // Adjust the version
+        artifact = "com.google.protobuf:protoc:3.21.0"
     }
     generateProtoTasks {
         all().forEach { task ->
@@ -100,9 +100,6 @@ protobuf {
                 create("java") {
                     option("lite")
                 }
-//                create("kotlin") {
-//                    option("lite")
-//                }
             }
         }
 
