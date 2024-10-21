@@ -19,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class WeatherViewModel @Inject constructor(
     private val getWeatherUseCase: GetWeatherUseCase,
-    private val dataStore: DataStore<MyData>
+   private val dataStore: DataStore<MyData>
 ) : ViewModel() {
     private val _weatherState = MutableStateFlow<UiState<Weather>>(UiState.Empty)
     val weatherState: StateFlow<UiState<Weather>> get() = _weatherState
@@ -27,7 +27,7 @@ class WeatherViewModel @Inject constructor(
     private val _temp = MutableStateFlow(0)
 
     init {
-        loadData()
+       loadData()
     }
 
     val nameFlow: Flow<String> get() = _nameFlow

@@ -5,9 +5,9 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
-    id("com.google.protobuf")
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.android.protobuf)
 
 }
 
@@ -92,7 +92,8 @@ kapt {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.21.0"
+
+        artifact =libs.protoc.plugin.get().toString()
     }
     generateProtoTasks {
         all().forEach { task ->
