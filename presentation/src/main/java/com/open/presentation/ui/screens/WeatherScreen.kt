@@ -1,4 +1,4 @@
-package com.open.presentation.ui
+package com.open.presentation.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,14 +27,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.open.data.network.UiState
 import com.open.presentation.ui.viewmodel.WeatherViewModel
 
+
 @Composable
 fun WeatherScreen(
     viewModel: WeatherViewModel = hiltViewModel()
+
 ) {
     var city by remember { mutableStateOf("") }
     val weatherState by viewModel.weatherState.collectAsState()
-
-
     Column(
         modifier = Modifier,
         verticalArrangement = Arrangement.Center,
@@ -78,7 +78,11 @@ fun WeatherScreen(
             }
 
             is UiState.Empty -> {
-                Text(text = "Enter a city to get weather information")
+                val name = viewModel.nameFlow.collectAsState("initial").value
+                val temp = viewModel.temp.collectAsState("initial").value
+                Text(text = "Last Fetched Weather ${temp} for ${name}")
+
+
             }
         }
     }
